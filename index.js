@@ -1,7 +1,9 @@
 var Canvas = require('canvas')
   , color = require('onecolor')
   , less = require('less')
-  , fs = require('fs');
+  , fs = require('fs')
+  , fse = require('fs-extra')
+  , path = require('path');
 
 var argv = require('optimist')
 		.usage('Generate a Tumblr colorization with a specifiv HSV value.\nUsage: $0 hue [-s saturation] [-v value] [--file=path/to/output.user.css]')
@@ -51,6 +53,7 @@ content = content.join('\n');
 try {
 	less.render(content, function (err, css) {
 		if(err) { return console.error(err) }
+		fse.mkdirsSync(path.dirname(argv.file));
 		fs.writeFile(argv.file, css, function(err, written, buffer) {
 			if(err) { return console.log(err); }
 			console.log('Success! Wrote output to %s', argv.file);
