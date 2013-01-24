@@ -2,7 +2,7 @@ Tumblr Colorizer
 ================
 A simple way to color Tumblr any way you want.
 
-[![Build Status](https://travis-ci.org/Tylian/tumblr-colorize-node.png?branch=master)](https://travis-ci.org/Tylian/tumblr-colorize-node)
+[![Build Status](https://travis-ci.org/Tylian/tumblr-colorize-node.png)](https://travis-ci.org/Tylian/tumblr-colorize-node)
 
 Usage
 -----
