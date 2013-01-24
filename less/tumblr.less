@@ -31,14 +31,19 @@
 body {
 	background: @body-color url("@{background-url}") top repeat-x;
 }
-body[style] {
-	background: transparent; // Wtf.
+
+// Hack to make iframes and the mass-tag editor behave..
+body[style], body#body {
+  background: transparent;
 }
 
-.dashboard_index #content,
-.dashboard_inbox #content,
-.dashboard_followers #content {
-	background: @body-color;
+.dashboard_index,
+.dashboard_inbox,
+.dashboard_followers,
+.dashboard_likes {
+	#content {
+		background: @body-color;
+	}
 }
 
 #header .selection_nipple {
