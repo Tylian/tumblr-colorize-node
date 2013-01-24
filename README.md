@@ -8,7 +8,7 @@ Usage
         
 		npm install
 		
-3. Run node . to get help with the script
+3. Run `node .` to get help with the script
 3. Generate the css file as you see fit.
 
         Example: node . 0 --value=+20
