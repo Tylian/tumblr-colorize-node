@@ -71,15 +71,15 @@ try {
 }
 
 function createGradient(height, start, stop) {
-	var canvas = new Canvas(100, height);
+	var canvas = new Canvas(1, height);
 	var ctx = canvas.getContext('2d');
 	
-	var gradient = ctx.createLinearGradient(0, 0, 100, height);
+	var gradient = ctx.createLinearGradient(0, 0, 1, height);
 	gradient.addColorStop(0, start);
 	gradient.addColorStop(1, stop);
 
 	ctx.fillStyle = gradient;
-	ctx.fillRect(0, 0, 100, height);
+	ctx.fillRect(0, 0, 1, height);
 	
 	return canvas.toDataURL('image/png');
 }
