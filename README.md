@@ -3,7 +3,7 @@ Usage
 
 1. Clone the repo
 2. Download and install nodejs and npm if you don't have them.
-3. Change to the directory of the node script.
+3. Change to the directory to the of the node script.
 3. Install the required modules
         
 		npm install
