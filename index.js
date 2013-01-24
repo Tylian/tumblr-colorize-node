@@ -24,16 +24,21 @@ var hue = argv._[0];
 var background = createGradient(553, hsvHex(hue, 51, 46), hsvHex(hue, 55, 38));
 var loading = createGradient(100, hsvHex(hue, 60, 27), hsvHex(hue, 57, 30));
 
-var content = argv.userstyle ? [
+var content =  [
 	'/*',
 	'Name: Tumblr Colorized to HSV(' + hue + ', ' + showSign(argv.saturation) + ', ' + showSign(argv.value) + ')',
 	'Version: 0.4',
 	'*/',
-	'',
-	'@namespace url(http://www.w3.org/1999/xhtml);',
-	'',
-	'@-moz-document  url-prefix("http://tumblr.com"), url-prefix("https://tumblr.com"), url-prefix("http://www.tumblr.com"), url-prefix("https://www.tumblr.com") {'
-] : [];
+	''
+];
+
+if(argv.userstyle) {
+	content.push(
+		'@namespace url(http://www.w3.org/1999/xhtml);',
+		'',
+		'@-moz-document  url-prefix("http://tumblr.com"), url-prefix("https://tumblr.com"), url-prefix("http://www.tumblr.com"), url-prefix("https://www.tumblr.com") {'
+	);
+}
 
 content.push(
 	'@import "less/tumblr.less";',
