@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Canvas = require('canvas')
   , color = require('onecolor')
   , less = require('less')

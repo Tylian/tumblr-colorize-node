@@ -12,6 +12,8 @@ Usage
 6. Generate the css file as you see fit.
 
         Example: node . 0 --value=+20
+		or
+		index.js 0 --value=+20
 	
 7. Load the generated user script with Stylish, or something.
 8. For Google Chrome's Stylish, you will have to add the following rules to the script for it to function correctly:
