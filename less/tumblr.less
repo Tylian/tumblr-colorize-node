@@ -1,0 +1,101 @@
+@import "elements.less";
+
+//
+// Pregenerated values
+//
+
+@body-color: hsv(@hue, 55% + @saturation, 38% + @value);
+@loading-color: hsv(@hue, 58% + @saturation, 30% + @value);
+@avatar-color: hsv(@hue, 82% + @saturation, 22% + @value);
+@shadow-color: hsv(@hue, 71% + @saturation, 26% + @value);
+@footer-color: hsv(@hue, 28% + @saturation, 67% + @value);
+@count-color: hsv(@hue, 14% + @saturation, 60% + @value);
+
+@button-one: hsv(@hue, 44% + @saturation, 80% + @value);
+@button-two: hsv(@hue, 47% + @saturation, 76% + @value);
+@button-three: hsv(@hue, 50% + @saturation, 74% + @value);
+@button-four: hsv(@hue, 53% + @saturation, 70% + @value);
+
+@chrome-start: hsv(@hue, 49% + @saturation, 81% + @value);
+@chrome-stop: hsv(@hue, 53% + @saturation, 73% + @value);
+@chrome-border: hsv(@hue, 14% + @saturation, 38% + @value);
+
+@chrome-active: hsv(@hue, 54% + @saturation, 69% + @value);
+@chrome-active-border: hsv(@hue, 54% + @saturation, 44% + @value);
+
+@curl-icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAABuElEQVRIx7WUSU/CQBTHC1VoNZG2LlgPRmM8qTEa/QRqogmJwQ8quwvoxUQMcUMI4sX1plRliYTEhPFNfZAKHUUKL/mdOv39O31vhuM4jjdgB2ycxSKE6NASEQFwGEI6IleAQUAGBjDIYSXAKJ8AJoFxYAxwY5jQbkBdTgxVLpeJqqqL8HwWUAFnOz0wledyGtmLHhzJsrwBa5ZxF70dkT+/5Mj55RVJnJ59ulySF9YtAMPYZGty7fVNl1N8gVBCkiQPrJ3DpvOW5IVCsS6n+IOhE/xFMzhNfNvySqXyQ04JhMJxURRXMaClHZjKaSVT6aaAYChyDAFrOEV0THt+myKm/Pbuvklu2ME6vDuPTXawApjy93zeVE7Z9gXigiB4cIrcrACmvFqtknQmyw7wBxIQsAmOJQxoOmhMuT41xSJTjj1IO51OLx60UQywtyTXT6umkYtkih0Q3slAwJZZwJ9yWh9w12SyN8yAaOzwGpq8Ar5pvFHpmNpakteqWCqRh8cn06Dd/VhEUZQpkLpqV/W/5GZFDxxtPoV8X94KXtO8ZXlj4ez3dUs+AvTT09sN+VA3v1xu/OdfTmcUMaXDpRMAAAAASUVORK5CYII=";
+
+//
+// Output values
+//
+body {
+	background: @body-color url("@{background-url}") top repeat-x;
+}
+body[style] {
+	background: transparent; // Wtf.
+}
+
+.dashboard_index #content,
+.dashboard_inbox #content,
+.dashboard_followers #content {
+	background: @body-color;
+}
+
+#header .selection_nipple {
+	border-bottom-color: @body-color;
+}
+
+#right_column::after {
+	.gradient(transparent, @body-color, fade(@body-color, 0));
+}
+
+#auto_pagination_loader {
+	background: @loading-color url("@{loading-url}") top repeat-x;
+	text-shadow: @shadow-color 2px 2px 3px;
+}
+
+.post_avatar {
+	background-color: @avatar-color;
+}
+
+#right_column .controls_section .with_subtitle small,
+.footer_links a,
+#footer {
+	color: @footer-color;
+}
+
+#posts .post .permalink {
+	background: @body-color url('@{curl-icon}');
+}
+
+.send_fan_mail {
+	.gradient-multi(~"top, @{button-one} 0%, @{button-two} 50%, @{button-three} 50%, @{button-four} 100%");
+}
+
+.chome.blue {
+	.gradient(@chrome-start, @chrome-start, @chrome-stop);
+	border-color: @chrome-border;
+	@active {
+		background: @chrome-active;
+		border-color: @chrome-active-border;
+	}
+}
+
+#posts .post .post_controls .reblog_count {
+	background-color: fade(@count-color, 65%);
+	&:hover {
+		background-color: fade(@count-color, 90%);
+	}
+}
+
+#posts .post .post_info,
+#posts .post .post_controls,
+.source_url {
+	color: fade(@count-color, 65%);
+	a {
+		color: fade(@count-color, 65%);
+		&:hover {
+			color: fade(@count-color, 90%);
+		}
+	}
+}
