@@ -27,3 +27,12 @@ Usage
 	* *URLs starting with:* http://www.tumblr.com
 	* *URLs starting with:* https://tumblr.com
 	* *URLs starting with:* https://www.tumblr.com
+	
+	
+Todo
+----
+ * .chrome.blue disabled and active/focus states.
+ * add body classes of all other pages to the script
+ * update script to new layout
+ * colorize sidebar notiifcations
+ * colorize buttons that aren't colorized
