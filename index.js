@@ -57,18 +57,14 @@ if(argv.userstyle) {
 
 content = content.join('\n');
 
-try {
-	less.render(content, function (err, css) {
-		if(err) { return console.error(err) }
-		fse.mkdirsSync(path.dirname(argv.file));
-		fs.writeFile(argv.file, css, function(err, written, buffer) {
-			if(err) { return console.log(err); }
-			console.log('Success! Wrote output to %s', argv.file);
-		});
+less.render(content, function (err, css) {
+	if(err) { return console.error(err) }
+	fse.mkdirsSync(path.dirname(argv.file));
+	fs.writeFile(argv.file, css, function(err, written, buffer) {
+		if(err) { return console.error(err); }
+		console.log('Success! Wrote output to %s', argv.file);
 	});
-} catch(err) {
-	console.error(err);
-}
+});
 
 function createGradient(height, start, stop) {
 	var canvas = new Canvas(1, height);
