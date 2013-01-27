@@ -1,4 +1,7 @@
 @import "elements.less";
+@import "linear-gradient.less"
+
+// Note: @hue, @saturation and @value will be set by the script rendering this file
 
 //
 // Pregenerated values
@@ -28,79 +31,83 @@
 //
 // Output values
 //
-body {
-	background: @body-color url("@{background-url}") top repeat-x;
-}
 
-// Hack to make iframes and the mass-tag editor behave..
-body[style], body#body {
-  background: transparent;
-}
 
 .dashboard_index,
 .dashboard_inbox,
 .dashboard_followers,
-.dashboard_likes {
+.dashboard_likes,
+.tagged_display {
 	#content {
 		background: @body-color;
 	}
 }
 
-#header .selection_nipple {
-	border-bottom-color: @body-color;
-}
-
-#right_column::after {
-	.gradient(transparent, @body-color, fade(@body-color, 0));
-}
-
-#auto_pagination_loader {
-	background: @loading-color url("@{loading-url}") top repeat-x;
-	text-shadow: @shadow-color 2px 2px 3px;
-}
-
-.post_avatar {
-	background-color: @avatar-color;
-}
-
-#right_column .controls_section .with_subtitle small,
-.footer_links a,
-#footer {
-	color: @footer-color;
-}
-
-#posts .post .permalink {
-	background: @body-color url('@{curl-icon}');
-}
-
-.send_fan_mail {
-	.gradient-multi(~"top, @{button-one} 0%, @{button-two} 50%, @{button-three} 50%, @{button-four} 100%");
-}
-
-.chrome.blue {
-	.gradient(@chrome-start, @chrome-start, @chrome-stop);
-	border-color: @chrome-border;
-	&:active {
-		background: @chrome-active;
-		border-color: @chrome-active-border;
+.layout_standard {
+	body& {
+		background: @body-color url("@{background-url}") top repeat-x;
 	}
-}
-
-#posts .post .post_controls .reblog_count {
-	background-color: fade(@count-color, 65%);
-	&:hover {
-		background-color: fade(@count-color, 90%);
+	
+	.plexi.show.color {
+		background-color: fade(@body-color, 90%);
 	}
-}
+	
+	#header .selection_nipple {
+		border-bottom-color: @body-color;
+	}
 
-#posts .post .post_info,
-#posts .post .post_controls,
-.source_url {
-	color: fade(@count-color, 65%);
-	a {
-		color: fade(@count-color, 65%);
+	#right_column::after {
+		.gradient(transparent, @body-color, fade(@body-color, 0));
+	}
+
+	#auto_pagination_loader {
+		background: @loading-color url("@{loading-url}") top repeat-x;
+		text-shadow: @shadow-color 2px 2px 3px;
+	}
+
+	.post_avatar {
+		background-color: @avatar-color;
+	}
+
+	#right_column .controls_section .with_subtitle small,
+	.footer_links a,
+	#footer {
+		color: @footer-color;
+	}
+
+	#posts .post .permalink {
+		background: @body-color url('@{curl-icon}');
+	}
+
+	.send_fan_mail {
+		.gradient-multi(~"top, @{button-one} 0%, @{button-two} 50%, @{button-three} 50%, @{button-four} 100%");
+	}
+
+	.chrome.blue {
+		.linear-gradient-multi(@chrome-start, @chrome-start, @chrome-stop);
+		border-color: @chrome-border;
+		&:active {
+			background: @chrome-active;
+			border-color: @chrome-active-border;
+		}
+	}
+
+	#posts .post .post_controls .reblog_count {
+		background-color: fade(@count-color, 65%);
 		&:hover {
-			color: fade(@count-color, 90%);
+			background-color: fade(@count-color, 90%);
+		}
+	}
+
+	#posts .post .post_info,
+	#posts .post .post_controls,
+	.source_url {
+		color: fade(@count-color, 65%);
+		a {
+			color: fade(@count-color, 65%);
+			&:hover {
+				color: fade(@count-color, 90%);
+			}
 		}
 	}
 }

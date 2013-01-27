@@ -39,13 +39,6 @@
                                  rgb(@start,@start,@start));
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
 }
-.gradient-multi( ... ) {
-	background-image: -webkit-linear-gradient(@arguments);
-	background-image: -moz-linear-gradient(@arguments);
-	background-image: -ms-linear-gradient(@arguments);
-	background-image: -o-linear-gradient(@arguments);
-	background-image: linear-gradient(@arguments);
-}
 .bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
   border-top: solid 1px @top-color;
   border-left: solid 1px @left-color;
