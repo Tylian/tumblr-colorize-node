@@ -22,10 +22,12 @@ var argv = require('optimist')
 		.argv;
 
 var hue = argv._[0];
-		
+
+// Generate gradient image data urls
 var background = createGradient(553, hsvHex(hue, 51, 46), hsvHex(hue, 55, 38));
 var loading = createGradient(100, hsvHex(hue, 60, 27), hsvHex(hue, 57, 30));
 
+// Generate the LESS file with HSV variables
 var content =  [
 	'/*',
 	'Name: Tumblr Colorized to HSV(' + hue + ', ' + showSign(argv.saturation) + ', ' + showSign(argv.value) + ')',
@@ -55,9 +57,8 @@ if(argv.userstyle) {
 	content.push('}');
 }
 
-content = content.join('\n');
-
-less.render(content, function (err, css) {
+// Render the LESS file and write the result to disk
+less.render(content.join('\n'), function (err, css) {
 	if(err) { return console.error(err) }
 	fse.mkdirsSync(path.dirname(argv.file));
 	fs.writeFile(argv.file, css, function(err, written, buffer) {
@@ -66,6 +67,13 @@ less.render(content, function (err, css) {
 	});
 });
 
+
+
+/*
+	Helper functions
+*/
+
+// Generates a 1xHeight pixel linear gradient png data url
 function createGradient(height, start, stop) {
 	var canvas = new Canvas(1, height);
 	var ctx = canvas.getContext('2d');
@@ -80,15 +88,12 @@ function createGradient(height, start, stop) {
 	return canvas.toDataURL('image/png');
 }
 
-
-/*
-	Helper functions
-*/
-
+// Covnvers a HSV value into a hex value.
 function hsvHex(h, s, v) {
 	return color(['HSV', h / 360, (s + argv.saturation) / 100, (v + argv.value) / 100, 1]).hex();
 }
 
+// Adds a positive sign to a number if it's needed.
 function showSign(value) {
 	if(value >= 0) return "+" + value;
 	return value.toString(10);
